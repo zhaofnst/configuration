@@ -25,7 +25,7 @@ export BOTO_CONFIG=/var/lib/jenkins/${aws_account}.boto
 run_ansible() {
   ansible-playbook $@
   ret=$?
-  [ $ret -ne 0 ] && echo "FAILED: $ret $@" && exit $ret
+  [ $ret -ne 0 ] && echo "FAILED: $ret $@" && exit $ret || echo "Continuing..."
 }
 
 # This DATE_TIME will be used as instance launch time tag
@@ -232,11 +232,15 @@ EOF
     fi
 fi
 
+echo "Point 1"
+
 declare -A deploy
 roles="edxapp forum notifier xqueue xserver ora discern certs demo testcourses"
 for role in $roles; do
     deploy[$role]=${!role}
 done
+
+echo "Point 2"
 
 # If reconfigure was selected or if starting from an ubuntu 12.04 AMI
 # run non-deploy tasks for all roles
@@ -255,10 +259,16 @@ if [[ $reconfigure != "true" && $server_type == "full_edx_installation" ]]; then
     done
 fi
 
+echo "Point 3"
+
 # deploy the edx_ansible role
 run_ansible edx_ansible.yml -i "${deploy_host}," $extra_var_arg --user ubuntu
 
+echo "Point 4"
+
 # set the hostname
 run_ansible set_hostname.yml -i "${deploy_host}," -e hostname_fqdn=${deploy_host} --user ubuntu
+
+echo "Point 5"
 
 rm -f "$extra_vars_file"
