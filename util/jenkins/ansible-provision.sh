@@ -195,6 +195,10 @@ EDXAPP_NEWRELIC_WORKERS_APPNAME: sandbox-${dns_name}-edxapp-workers
 XQUEUE_NEWRELIC_APPNAME: sandbox-${dns_name}-xqueue
 FORUM_NEW_RELIC_APP_NAME: sandbox-${dns_name}-forums
 SANDBOX_USERNAME: $github_username
+EDXAPP_ECOMMERCE_PUBLIC_URL_ROOT: "http://${deploy_host}:18130"
+EDXAPP_ECOMMERCE_API_URL: "http://${deploy_host}:18130/api"
+ECOMMERCE_ECOMMERCE_URL_ROOT: "http://${deploy_host}:18130"
+ECOMMERCE_LMS_URL_ROOT: "http://${deploy_host}"
 EOF
 fi
 
