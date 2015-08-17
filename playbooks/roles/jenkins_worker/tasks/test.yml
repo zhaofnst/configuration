@@ -21,6 +21,16 @@
     that:
       - "'1.7.0' in java_version.stderr"
 
+# Firefox has a specific version, not the latest. This test also ensures it was not
+# pulled in via dependency or misuse/clobbering due to the sitespeed variable, which uses
+# the latest firefox.
+- name: Verify firefox version
+  shell: firefox --version
+  register: firefox_version
+- assert:
+  that:
+    - "'28.0' in firefox_version"
+
 # The role is run with a github oauth token passed in
 # as github_oauth_token var value.
 # This test confirms that the key being used will work

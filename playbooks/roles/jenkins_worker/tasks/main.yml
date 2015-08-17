@@ -11,6 +11,11 @@
 - include: packer.yml
 - include: system.yml
 - include: python.yml
+  when: not sitespeed_worker
 - include: ruby.yml
+  when: not sitespeed_worker
 - include: java.yml
 - include: test.yml
+  when: not sitespeed_worker
+- include: python_sitespeed.yml
+  when: sitespeed_worker
