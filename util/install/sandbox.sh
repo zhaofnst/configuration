@@ -27,7 +27,7 @@ sudo apt-get upgrade -y
 ##
 sudo apt-get install -y build-essential software-properties-common python-software-properties curl git-core libxml2-dev libxslt1-dev python-pip python-apt python-dev
 sudo pip install --upgrade pip
-sudo pip install --upgrade virtualenv
+sudo -H pip install --upgrade virtualenv
 
 ## Did we specify an openedx release?
 if [ -n "$OPENEDX_RELEASE" ]; then
@@ -45,15 +45,15 @@ fi
 ## Clone the configuration repository and run Ansible
 ##
 cd /var/tmp
-git clone https://github.com/edx/configuration
+git clone https://github.com/xiangjf/configuration
 cd configuration
-git checkout $CONFIG_VER
+git checkout cypress-fnst-patch
 
 ##
 ## Install the ansible requirements
 ##
 cd /var/tmp/configuration
-sudo pip install -r requirements.txt
+sudo -H pip install -r requirements.txt
 
 ##
 ## Run the edx_sandbox.yml playbook in the configuration/playbooks directory
