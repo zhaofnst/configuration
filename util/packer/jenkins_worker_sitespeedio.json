@@ -55,6 +55,6 @@
       "pip install -q -r requirements.txt",
       "echo '[jenkins_worker_sitespeedio]' > inventory.ini",
       "echo 'localhost' >> inventory.ini",
-      "ansible-playbook edx-east/jenkins_worker_sitespeedio.yml -i inventory.ini -c local -vvvv"]
+      "ansible-playbook edx-east/jenkins_worker_sitespeedio.yml -i inventory.ini -c local -e 'github_oauth_token={{ user `github_oauth_token` }}' -vvvv"]
   }]
 }

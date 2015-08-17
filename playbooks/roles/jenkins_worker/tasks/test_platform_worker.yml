@@ -22,8 +22,8 @@
   shell: firefox --version
   register: firefox_version
 - assert:
-  that:
-    - "'28.0' in firefox_version"
+    that:
+      - "'28.0' in firefox_version"
 
 # Verify the virtualenv tar is newly-built
 - name: Get info on virtualenv tar
