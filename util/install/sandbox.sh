@@ -46,7 +46,7 @@ fi
 ## Clone the configuration repository and run Ansible
 ##
 cd /var/tmp
-git clone https://github.com/xiangjf/configuration
+git clone https://github.com/zhaofnst/configuration
 cd configuration
 git checkout cypress-fnst-patch
 
